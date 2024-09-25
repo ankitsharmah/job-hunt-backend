@@ -100,7 +100,7 @@ export const register = async (req, res) => {
                 }
                 const token =await jwt.sign(tokenData,process.env.SECRET_KEY,{expiresIn:'1d'});
                 console.log(token)
-            return res.status(200).cookie("token",token,{maxAge:1*24*60*60*1000,httpsOnly:true,sameSite:'strict'}).json({
+           return res.status(200).cookie("token",token,{maxAge:1*24*60*60*1000,httpsOnly:true,sameSite:'none',secure:true}).json({
                 message:`welcome back ${user.fullname}`,
                 user,
                 success:true
