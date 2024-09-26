@@ -111,11 +111,7 @@ export const register = async (req, res) => {
                 }
                 const token =await jwt.sign(tokenData,process.env.SECRET_KEY,{expiresIn:'1d'});
                 console.log(token)
-<<<<<<< HEAD
             return res.status(200).cookie("token",token,{maxAge:1*24*60*60*1000,httpsOnly:true,sameSite:'none',secure:true}).json({
-=======
-           return res.status(200).cookie("token",token,{maxAge:1*24*60*60*1000,httpsOnly:true,sameSite:'none',secure:true}).json({
->>>>>>> c8618824b524462dbf01e39c18cbe8c8614d43a6
                 message:`welcome back ${user.fullname}`,
                 user,
                 success:true
@@ -124,7 +120,6 @@ export const register = async (req, res) => {
             console.log(error)
         }
     }
-<<<<<<< HEAD
     export const logOut=(req,res) => {
 
         try {
@@ -132,16 +127,6 @@ export const register = async (req, res) => {
                 message:"successfully logedout",
                 tokenn:"deleted",
                 success:true
-=======
-export const logOut = (req, res) => {
-    try {
-        return res.status(200)
-            .cookie('token', '', { 
-                maxAge: 0, // Set expiration to the past
-                httpOnly: true, 
-                sameSite: 'none', // Ensure this is consistent with login
-                secure: true // Should be true in production (HTTPS)
->>>>>>> c8618824b524462dbf01e39c18cbe8c8614d43a6
             })
             .json({
                 message: "Successfully logged out",
