@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: ['http://localhost:5173', 'https://job-hunt-black.vercel.app'], // Allow both localhost and Vercel
+    origin: ['http://localhost:5173', 'https://job-hunt-black.vercel.app','https://btpw85gp-5173.inc1.devtunnels.ms'], // Allow both localhost and Vercel
     credentials: true
 };
 
