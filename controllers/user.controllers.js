@@ -123,15 +123,18 @@ export const register = async (req, res) => {
     export const logOut=(req,res) => {
 
         try {
-            return res.status(200).cookie("token","deleted",{maxAge:0}).json({
-                message:"successfully logedout",
-                tokenn:"deleted",
-                success:true
-            })
-            .json({
-                message: "Successfully logged out",
-                success: true
-            });
+            return res.status(200)
+                .cookie('token', '', { 
+                    maxAge: 0, // Set expiration to the past
+                    httpOnly: true, 
+                    sameSite: 'none', // Ensure this is consistent with login
+                    secure: true // Should be true in production (HTTPS)
+    
+                })
+                .json({
+                    message: "Successfully logged out",
+                    success: true
+                });
     } catch (error) {
         console.log(error);
         return res.status(500).json({
@@ -139,6 +142,10 @@ export const register = async (req, res) => {
             success: false
         });
     }
+
+   
+
+
 };
 
 
@@ -202,6 +209,7 @@ export const register = async (req, res) => {
     //         console.log(error);
     //     }
     // }
+    
 
     export const updateProfile = async (req, res) => {
         try {
